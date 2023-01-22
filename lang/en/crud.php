@@ -1,0 +1,183 @@
+<?php
+
+return [
+    'common' => [
+        'actions' => 'Actions',
+        'create' => 'Create',
+        'edit' => 'Edit',
+        'update' => 'Update',
+        'new' => 'New',
+        'cancel' => 'Cancel',
+        'attach' => 'Attach',
+        'detach' => 'Detach',
+        'save' => 'Save',
+        'delete' => 'Delete',
+        'delete_selected' => 'Delete selected',
+        'search' => 'Search...',
+        'back' => 'Back to Index',
+        'are_you_sure' => 'Are you sure?',
+        'no_items_found' => 'No items found',
+        'created' => 'Successfully created',
+        'saved' => 'Saved successfully',
+        'removed' => 'Successfully removed',
+    ],
+
+    'users' => [
+        'name' => 'Users',
+        'index_title' => 'Users List',
+        'new_title' => 'New User',
+        'create_title' => 'Create User',
+        'edit_title' => 'Edit User',
+        'show_title' => 'Show User',
+        'inputs' => [
+            'profile_photo_path' => 'Profile Photo Path',
+            'name' => 'Name',
+            'email' => 'Email',
+            'password' => 'Password',
+            'type' => 'Type',
+        ],
+    ],
+
+    'buses' => [
+        'name' => 'Buses',
+        'index_title' => 'Buses List',
+        'new_title' => 'New Bus',
+        'create_title' => 'Create Bus',
+        'edit_title' => 'Edit Bus',
+        'show_title' => 'Show Bus',
+        'inputs' => [
+            'user_id' => 'User',
+            'name' => 'Name',
+            'capacity' => 'Capacity',
+            'maintenance' => 'maintenance',
+        ],
+    ],
+
+    'discounts' => [
+        'name' => 'Discounts',
+        'index_title' => 'Discounts List',
+        'new_title' => 'New Discount',
+        'create_title' => 'Create Discount',
+        'edit_title' => 'Edit Discount',
+        'show_title' => 'Show Discount',
+        'inputs' => [
+            'name' => 'Name',
+            'number_of_seats' => 'Number Of Seats',
+            'percentage' => 'Percentage',
+        ],
+    ],
+
+    'governorates' => [
+        'name' => 'Governorates',
+        'index_title' => 'Governorates List',
+        'new_title' => 'New Governorate',
+        'create_title' => 'Create Governorate',
+        'edit_title' => 'Edit Governorate',
+        'show_title' => 'Show Governorate',
+        'inputs' => [
+            'name' => 'Name',
+            'key' => 'Key',
+        ],
+    ],
+
+    'orders' => [
+        'name' => 'Orders',
+        'index_title' => 'Orders List',
+        'new_title' => 'New Order',
+        'create_title' => 'Create Order',
+        'edit_title' => 'Edit Order',
+        'show_title' => 'Show Order',
+        'inputs' => [
+            'name' => 'Name',
+            'email' => 'Email',
+            'phone' => 'Phone',
+            'trip_id' => 'Trip',
+            'discount_id' => 'Discount',
+            'payment_type' => 'Payment Type',
+            'tax' => 'Tax',
+            'subtotal_amount' => 'Subtotal Amount',
+            'total_amount' => 'Total Amount',
+        ],
+    ],
+
+    'order_passengers' => [
+        'name' => 'Order Passengers',
+        'index_title' => 'Passengers List',
+        'new_title' => 'New Passenger',
+        'create_title' => 'Create Passenger',
+        'edit_title' => 'Edit Passenger',
+        'show_title' => 'Show Passenger',
+        'inputs' => [
+            'type' => 'Type',
+            'user_id' => 'User',
+            'seat_id' => 'Seat',
+        ],
+    ],
+
+    'seats' => [
+        'name' => 'Seats',
+        'index_title' => 'Seats List',
+        'new_title' => 'New Seat',
+        'create_title' => 'Create Seat',
+        'edit_title' => 'Edit Seat',
+        'show_title' => 'Show Seat',
+        'inputs' => [
+            'referance' => 'Referance',
+            'number' => 'Number',
+            'line' => 'Line',
+        ],
+    ],
+
+    'cities' => [
+        'name' => 'Cities',
+        'index_title' => 'Cities List',
+        'new_title' => 'New City',
+        'create_title' => 'Create City',
+        'edit_title' => 'Edit City',
+        'show_title' => 'Show City',
+        'inputs' => [
+            'governorate_id' => 'Governorate',
+            'name' => 'Name',
+            'key' => 'Key',
+        ],
+    ],
+
+    'stations' => [
+        'name' => 'Stations',
+        'index_title' => 'Stations List',
+        'new_title' => 'New Station',
+        'create_title' => 'Create Station',
+        'edit_title' => 'Edit Station',
+        'show_title' => 'Show Station',
+        'inputs' => [
+            'name' => 'Name',
+            'city_id' => 'City',
+            'longitude' => 'Longitude',
+            'latitude' => 'Latitude',
+            'active' => 'Active',
+        ],
+    ],
+
+    'trips' => [
+        'name' => 'Trips',
+        'index_title' => 'Trips List',
+        'new_title' => 'New Trip',
+        'create_title' => 'Create Trip',
+        'edit_title' => 'Edit Trip',
+        'show_title' => 'Show Trip',
+        'inputs' => [
+            'name' => 'Name',
+            'frequent' => 'Frequent',
+            'pickup_id' => 'Pickup',
+            'destination_id' => 'Destination',
+            'bus_id' => 'Bus',
+            'type' => 'Type',
+            'distance' => 'Distance',
+            'price' => 'Price',
+            'start_at' => 'Start At',
+            'end_at' => 'End At',
+            'cron_experations' => 'Cron Experations',
+            'active' => 'Active',
+        ],
+    ],
+];
