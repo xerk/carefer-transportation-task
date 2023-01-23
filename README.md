@@ -6,9 +6,6 @@ The Bus Ticket Reservation Transportation API allows users to easily search for 
 
 [Postman Collection](https://drive.google.com/file/d/136g5y9t3omyGnp4f4qorpR1XhcIGqFhG/view?usp=sharing)
 
-PI source code: [Arbeitnow](https://documenter.getpostman.com/view/18545278/UVJbJdKh).
-
-
 ## Clone the project
 
 Run Composer \
