@@ -46,9 +46,12 @@ class Order extends Model
         'discount_id',
         'payment_type',
         'payment_status',
+        'date',
+
         'tax',
         'subtotal_amount',
         'total_amount',
+
         'token',
         'expire_at',
     ];
@@ -59,6 +62,7 @@ class Order extends Model
      * @var string[]
      */
     protected $casts = [
+        'date' => 'datetime',
         'expire_at' => 'datetime',
     ];
 
@@ -89,15 +93,49 @@ class Order extends Model
     // Not expire orders
     public function scopeNotExpire($query)
     {
-        return $query->where('expire_at', '<', now())->where('status', '!=', 'expired');
+        return $query->where('expire_at', '>', now())->where('status', '!=', 'expired')->orWhere('status', 'closed');
     }
 
     public function calculateTotal()
     {
-        $this->subtotal_amount = $this->trip->price;
-        $this->tax = $this->subtotal_amount * 0.14; // 14% tax rate of egypt
-        $this->total = $this->subtotal_amount + $this->tax;
+        // Update order total
+        $this->total_amount = $this->trip->price * $this->passengers()->count();
+
+        // Update order discount
+        if ($this->discount) {
+            $percentage = $this->discount->percentage;
+            $this->total_amount = $this->total_amount - ($this->total_amount * ($percentage / 100));
+        }
+
+        // Update order subtotal
+        $this->subtotal_amount = number_format($this->total_amount, 2, '.', '');
+
+        // Update order tax
+        $this->tax = number_format(($this->total_amount * (14 / 100)), 2, '.', '');
+
+        // Update order total
+        $this->total_amount = number_format($this->subtotal_amount + $this->tax, 2, '.', '');
+
         $this->save();
+    }
+
+    /**
+     * Get the available seats from the bus of the trip where a seat not in the order passengers where the order date and status is closed
+     *
+     * @return array
+     */
+    public function getAvailableSeats() : array
+    {
+        $seats = $this->trip->bus->availableSeats;
+
+        $passengers = Passenger::whereHas('order', function ($query) {
+            $query->where('date', $this->date)->where('status', '<>','expired');
+        })->get();
+
+        $passengersSeats = $passengers->pluck('seat_id');
+
+        // Return the available seats not available in the passengers seats
+        return $seats->whereNotIn('id', $passengersSeats)->pluck('id')->toArray();
     }
 
 }

@@ -16,8 +16,8 @@ return new class () extends Migration {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('email')->nullable();
-            $table->enum('phone')->nullable();
-            $table->string('status')->nullable();
+            $table->string('phone')->nullable();
+            $table->enum('status', ['open','canceled','expired', 'closed', 'processing', 'on-hold'])->nullable();
             $table->unsignedBigInteger('trip_id');
             $table->unsignedBigInteger('discount_id')->nullable();
             $table->enum('payment_type', ['cash', 'card'])->nullable();
@@ -26,6 +26,7 @@ return new class () extends Migration {
             $table->string('subtotal_amount')->nullable();
             $table->string('total_amount')->nullable();
             $table->string('token')->nullable();
+            $table->timestamp('date')->nullable();
             $table->timestamp('expire_at')->nullable();
 
             $table->timestamps();

@@ -23,7 +23,7 @@ class TripController extends Controller
         $validated = $request->validate([
             'pickup_id' => ['required', 'numeric', 'exists:stations,id'],
             'destination_id' => ['required', 'numeric', 'exists:stations,id'],
-            'date' => ['required', 'date_format:Y-m-d', 'after_or_equal:today'],
+            'date' => ['required', 'date', 'after_or_equal:today'],
         ]);
 
         $trips = Trip::whereActive(true)->wherePickupId($validated['pickup_id'])
